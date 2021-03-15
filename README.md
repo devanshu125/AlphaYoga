@@ -1,4 +1,4 @@
-<p align="center"><img src="https://github.com/Codeshastra-7/31_DeepMind/blob/master/static/readme_yoga.png" height=400 width=400 ></img></p>
+<p align="center"><img src="https://github.com/devanshu125/AlphaYoga/blob/main/static/readme_yoga.png" height=400 width=400 ></img></p>
 
 # AlphaYoga
 
@@ -12,12 +12,17 @@ To build and run the project on your device, do the following:
 
 - Install Anaconda by following the instructions on their [website](https://www.anaconda.com/) and make sure you have Anaconda Prompt.
 - Make environment using `environment.yml` file.
-- Clone this repo to your local machine using `https://github.com/Codeshastra-7/31_DeepMind.git`.
+- Clone this repo to your local machine using `https://github.com/devanshu125/AlphaYoga.git`.
 - Start Anaconda Prompt and type `flask run`
+
+## Prediction
+Our prediction results for pose detection using Machine Learning -
+<p align="left"><img src="https://github.com/devanshu125/AlphaYoga/blob/main/static/ml_yoga_pose.jpg" height=400 width=400 ></img></p>
+
 
 ## Credits
 
-This project is developed by [Manan Jhaveri](https://github.com/mananjhaveri) and [Devanshu Ramaiya](https://github.com/devanshu125). Take a look at the entire list of [contributors](https://github.com/Codeshastra-7/31_DeepMind/graphs/contributors) to see who all have helped with the project.
+This project is developed by [Manan Jhaveri](https://github.com/mananjhaveri) and [Devanshu Ramaiya](https://github.com/devanshu125).
 
 ## License
 

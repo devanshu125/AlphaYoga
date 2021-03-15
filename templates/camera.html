@@ -1,0 +1,34 @@
+{% extends "layout_camera.html" %}
+
+{%block title%}
+  Webcam
+{%endblock%}
+
+{% block main %}
+  <h1 style="text-align:center">Lights, Camera, {{exercise}}!</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8  offset-lg-2">
+            <!-- <h3 class="mt-5">Live Streaming</h3> -->
+            <img src="{{ url_for('video_feed') }}" width="100%">
+            <h3>{{exercise}}</h3>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>
+<br>
+
+{% if success == True %}
+  <h3 style="text-align:center">Perfect {{exercise}}!</h3>
+{% endif %}
+
+<form action="/" method="get">
+
+<button type="submit" class="btn btn-primary">End workout</button>
+
+</form>
+
+{% endblock %}

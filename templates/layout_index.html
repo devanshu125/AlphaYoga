@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.min.js"></script>
+
+        <!-- documentation at http://getbootstrap.com/docs/4.1/, alternative themes at https://bootswatch.com/ -->
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- https://favicon.io/emoji-favicons/money-mouth-face/ -->
+        <link href="/static/favicon.ico" rel="icon">
+
+        <link href="/static/styles.css" rel="stylesheet">
+
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+
+        <title> AlphaYoga {% block title %}{% endblock %}</title>
+
+    </head>
+
+    <body>
+
+        <nav class="navbar navbar-expand-md navbar-light bg-light border">
+            <a class="navbar-brand red" href="/"><span class="blue">AlphaYoga</span></a>
+            <button aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbar" data-toggle="collapse" type="button">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbar">
+                {% if session.user_id %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/guide">Guide</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/meditation">Meditation</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/analytics">Analytics</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/logout">Log Out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="navbar-nav ml-auto mt-2">
+                        <li class="nav-item"><a class="nav-link" href="/register">Sign-Up</a></li>
+                        <li class="nav-item"><a class="nav-link" href="/login">Log-In</a></li>
+                    </ul>
+                {% endif %}
+            </div>
+        </nav>
+
+        <main class="container p-5">
+          {% block main %}{% endblock %}
+        </main>
+
+      </body>
+
+</html>
+
+<script>
+    var todo_items = 0;
+    window.onload = function(){
+        
+    var todo = document.getElementById("todo");
+    var todo_form = todo.querySelector("#todo-form");
+    todo_form.onsubmit = function(e){
+        var todo_input = e.target.querySelector("input[name='todo']");
+        var todo_name;
+        if(todo_input.dataset.edit == "true"){
+        var todo_item_id = todo_input.dataset.id;
+        todo_name = todo.querySelector(".tasks #item" + todo_item_id + " .todo-name");
+        todo_name.textContent = todo_input.value;
+        todo_input.dataset.edit = false;
+        todo_input.dataset.id = "";
+        }else{
+
+        var todo_value = todo_input.value;
+
+        var item = document.createElement("tr");
+        item.id = "item"+todo_items;
+
+        var todo_check = document.createElement("td");
+        todo_check.setAttribute("class", "check fa fa-square");
+        todo_check.dataset.id = todo_items;
+        todo_check.dataset.checked = false;
+        todo_check.onclick = function(e){
+            var todo_item_id = e.target.dataset.id;
+            var todo_name = todo.querySelector(".tasks #item" + todo_item_id + " .todo-name");
+            if(e.target.dataset.checked == "true"){
+            e.target.setAttribute("class", "check fa fa-square");
+            todo_name.style.textDecoration = "";
+            e.target.dataset.checked = false;
+            }else{
+            e.target.setAttribute("class", "check fa fa-check-square");
+            todo_name.style.textDecoration = "line-through";
+            e.target.dataset.checked = true;
+            }
+        };
+        item.appendChild(todo_check);
+
+        todo_name = document.createElement("td");
+        todo_name.setAttribute("class","todo-name");
+        todo_name.textContent = todo_value;
+        item.appendChild(todo_name);
+
+        var edit_delete = document.createElement("td");
+
+        var edit_button = document.createElement("a");
+        edit_button.href = "/camera";
+        edit_button.textContent = "Start";
+        edit_button.dataset.id = todo_items;
+        edit_button.onclick = function(){
+            location.href = edit_button.href;
+        }
+        edit_delete.appendChild(edit_button);
+
+        edit_delete.appendChild(document.createTextNode(" | "));
+
+        var delete_button = document.createElement("a");
+        delete_button.href = "#";
+        delete_button.textContent = "Delete";
+        delete_button.dataset.id = todo_items;
+        delete_button.onclick = function(e){
+            var todo_item_id = e.target.dataset.id;
+            var todo_item = todo.querySelector(".tasks #item" + todo_item_id);
+            todo_item.parentNode.removeChild(todo_item);
+            return false;
+        };
+        edit_delete.appendChild(delete_button);
+
+        item.appendChild(edit_delete);
+
+        var tasks = todo.querySelector(".tasks");
+        tasks.appendChild(item);
+
+        todo_items++;
+        }
+        return false;
+    };
+    };
+</script>

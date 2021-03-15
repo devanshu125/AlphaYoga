@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <form action="/register" method="post">
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="username" placeholder="Username" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password" placeholder="Password" type="password">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="password(again)" placeholder="Confirm Password" type="password">
+        </div>
+        
+        <div class="form-group">
+            <input class="form-control" name="height" placeholder="Height (cm)" type="number">
+        </div>
+
+        <div class="form-group">
+            <input class="form-control" name="weight" placeholder="Weight (Kg)" type="number">
+        </div>
+
+        <div class="form-group">
+            <input type="checkbox" name="options" value="back"> Back </input<br>
+            <input type="checkbox" name="options" value="fatloss"> Fat-loss </input<br>
+            <input type="checkbox" name="options" value="legs"> Legs </input<br>
+            <input type="checkbox" name="options" value="arms"> Arms </input<br>
+        </div>
+
+        <br>
+
+
+        <button class="btn btn-primary" type="submit">Submit</button>
+    </form>
+{% endblock %}

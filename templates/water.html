@@ -1,0 +1,27 @@
+{% extends "layout_analytics.html" %}
+
+{%block title%}
+  Analytics
+{%endblock%}
+
+{% block main %}
+
+<h1 style="text-align:center">Please stay hydrated...</h1>
+
+<div class="column">
+    <img src="static/water.jpg">
+</div>
+
+<!-- <form action="/analytics" method="post"> -->
+
+    <div class='form-group'>
+        <div class="column">
+        <button class="btn btn-primary" onclick="increment()">+</button>
+        <input id="demoInput" class='form-control' type=number min=0 max=100 value="water">
+        <button class="btn btn-primary" onclick="decrement()">-</button>
+        </div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+
+  <!-- </form> -->
+
+  {% endblock%}

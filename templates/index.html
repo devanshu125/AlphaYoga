@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{%block title%}
+  Home
+{%endblock%}
+
+{% block main %}
+ <h1 style="text-align:center">AlphaYoga: Your stress cutter</h1>
+
+    <!-- <div class="column">
+      <video controls loop width="520" height="340" autoplay>
+        <source src="static/yoga_gif.mp4" type="video/mp4">
+      </video>
+    </div> -->
+    <table class="table">
+      <thead>
+          <tr>
+              <th>Exercise</th>
+              <th>Reps</th>
+          </tr>
+      </thead>
+
+      <tbody>
+          {% for i in range(qtys | length) %}
+              <tr>
+                  <td>{{ qtys.exercise[i] }}</td>
+                  <td>{{ qtys.reps[i] }}</td>
+              </tr>
+          {% endfor %}
+      </tbody>
+  </table>
+
+    <br>
+    <br>
+
+    <form action="/camera" method="post">
+
+      <div class="form-group">
+          <select name="select1"> <!-- note the name -->
+              <option value="None" disabled>Select Exercise</option>
+              <option value="plank">Plank</option>
+              <option value="tree">Tree</option>
+              <option value="goddess">Goddess</option>
+              <option value="warrior2">Warrior2</option>
+              <option value="downdog">Downdog</option>
+          </select>
+      </div>
+
+
+      <button class="btn btn-primary" type="submit">Start workout</button>
+  </form>
+
+{% endblock %}

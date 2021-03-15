@@ -17,7 +17,7 @@ To build and run the project on your device, do the following:
 
 ## Prediction
 Our prediction results for pose detection using Machine Learning -
-<p align="left"><img src="https://github.com/devanshu125/AlphaYoga/blob/main/static/ml_yoga_pose.jpg" height=400 width=400 ></img></p>
+<p align="left"><img src="https://github.com/devanshu125/AlphaYoga/blob/main/static/ml_yoga_pose.JPG" height=400 width=400 ></img></p>
 
 
 ## Credits
